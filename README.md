@@ -1,6 +1,6 @@
 # grunt-aws-sdk
 
-> bridge between grunt and aws-sdk
+> The bridge between `grunt` and `aws-sdk`. This moudle allows you to call AWS APIs as grunt tasks.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
@@ -17,19 +17,29 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-aws-sdk');
 ```
 
-## The "aws_sdk" task
+## The "aws" task
 
 ### Overview
-In your project's Gruntfile, add a section named `aws_sdk` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `aws` to the data object passed into `grunt.initConfig()`.  
+The key of `target` is a string which consists of `service name` and `method name`, and the value is the first argument of the method. (See also [AWS SDK document](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/frames.html))  
 
 ```js
 grunt.initConfig({
-  aws_sdk: {
+  aws: {
     options: {
-      // Task-specific options go here.
+      credentials: {
+        accessKeyId: 'Your Access Key ID',
+        secretAccessKey: 'Your Secret Access Key',
+        region: 'ap-northeast-1'
+      }
     },
-    your_target: {
-      // Target-specific file lists and/or options go here.
+    's3.copyObject': {
+      Bucket: '...',
+      CopySource: '...',
+      Key: '...'
+    },
+    'ec2.describeInstances': {
+      InstanceIds: ['...', '...']
     },
   },
 })
@@ -37,50 +47,12 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
-Type: `String`
-Default value: `',  '`
+#### options.credentials
+Type: `Object`
+Default value: `{}`
 
-A string value that is used to do something with whatever.
-
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
-
-A string value that is used to do something else with whatever else.
-
-### Usage Examples
-
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
-
-```js
-grunt.initConfig({
-  aws_sdk: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
-```
-
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
-
-```js
-grunt.initConfig({
-  aws_sdk: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
-```
+An object value that is used to access to your AWS account.  
+You need to prepare Access Keys [here](https://console.aws.amazon.com/iam/home?#security_credential).
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
