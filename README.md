@@ -21,7 +21,12 @@ grunt.loadNpmTasks('grunt-aws-sdk');
 
 ### Overview
 In your project's Gruntfile, add a section named `aws` to the data object passed into `grunt.initConfig()`.  
-The key of `target` is a string which consists of `service name` and `method name`, and the value is the first argument of the method. (See also [AWS SDK document](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/frames.html))  
+The `target` object consists of `service`, `method` and `params` properties.  
+  
+`service`: the name of AWS service.   e.g.) `ec2`, `s3`, `dynamodb`  
+`method`: the function name of AWS SDK.  
+`params`: the first argument that `method` is called with.  
+(See also [AWS SDK document](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/frames.html))  
 
 ```js
 grunt.initConfig({
@@ -33,16 +38,33 @@ grunt.initConfig({
         region: 'ap-northeast-1'
       }
     },
-    's3.copyObject': {
-      Bucket: '...',
-      CopySource: '...',
-      Key: '...'
+    'launchEC2Instance': {
+      service: 'ec2',
+      method: 'runInstances',
+      params: {
+        ImageId: 'ami-3f32ac3e', // ubuntu 12.04.3 / 64bit
+        MinCount: 1,
+        MaxCount: 1,
+        KeyName: 'Your key pair name',
+        SecurityGroupIds: ['Your security group id'],
+        InstanceType: 't1.micro'
+      }
     },
-    'ec2.describeInstances': {
-      InstanceIds: ['...', '...']
+    'setName': {
+      service: 'ec2',
+      method: 'createTags',
+      params: {
+        Resources: ['<%= aws.data.launch.Instances[0].InstanceId %>'],
+        Tags: [{
+          Key: 'Name',
+          Value: 'Your instance name'
+        }]
+      }
     },
   },
-})
+});
+
+grunt.registerTask('launch', ['launchEC2Instance', 'setName']);
 ```
 
 ### Options
@@ -53,6 +75,12 @@ Default value: `{}`
 
 An object value that is used to access to your AWS account.  
 You need to prepare Access Keys [here](https://console.aws.amazon.com/iam/home?#security_credential).
+
+#### options.dest
+Type: `String`
+Default value: `null`
+
+A directory path of `target` response files.  
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
