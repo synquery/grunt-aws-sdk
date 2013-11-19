@@ -45,8 +45,8 @@ grunt.initConfig({
         ImageId: 'ami-3f32ac3e', // ubuntu 12.04.3 / 64bit
         MinCount: 1,
         MaxCount: 1,
-        KeyName: 'Your key pair name',
-        SecurityGroupIds: ['Your security group id'],
+        KeyName: 'Your Key Pair Name',
+        SecurityGroupIds: ['Your Security Group ID'],
         InstanceType: 't1.micro'
       }
     },
@@ -57,7 +57,7 @@ grunt.initConfig({
         Resources: ['<%= aws.data.launchEC2Instance.Instances[0].InstanceId %>'],
         Tags: [{
           Key: 'Name',
-          Value: 'Your instance name'
+          Value: 'Your Instance Name'
         }]
       }
     },
