@@ -54,7 +54,7 @@ grunt.initConfig({
       service: 'ec2',
       method: 'createTags',
       params: {
-        Resources: ['<%= aws.data.launch.Instances[0].InstanceId %>'],
+        Resources: ['<%= aws.data.launchEC2Instance.Instances[0].InstanceId %>'],
         Tags: [{
           Key: 'Name',
           Value: 'Your instance name'
