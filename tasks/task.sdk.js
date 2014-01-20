@@ -7,10 +7,10 @@ module.exports = function(grunt) {
     var info = srv[name];
     AWS.config.update(credentials);
     AWS.config.apiVersions[name] = info.apiVersion;
-    return new AWS[info.namespace];
+    return new AWS[info.namespace]();
   };
 
-  var response = grunt.config.data.aws.data = {};
+  var response = {};
 
   grunt.registerMultiTask('aws', function() {
 
@@ -25,17 +25,19 @@ module.exports = function(grunt) {
     var sname = data.service, name = sname;
     var fname = data.method, params = data.params || {};
 
-    if(typeof name === 'string')
+    if(typeof name === 'string') {
       name = name.toLowerCase();
+    }
 
-    if(!srv[name])
+    if(!srv[name]) {
       return grunt.warn('The service "' + sname + '" is not supported.');
+    }
 
     var service = getService(name, credentials), fn = service[fname];
 
-    if(typeof fn !== 'function')
-      return grunt.warn('No such function "' + fname + '" in ' + sname
-        + ' service.');
+    if(typeof fn !== 'function') {
+      return grunt.warn('No such function "' + fname + '" in ' + sname + ' service.');
+    }
 
     grunt.verbose.debug('Request:');
     grunt.verbose.debug(JSON.stringify(params));
@@ -46,8 +48,9 @@ module.exports = function(grunt) {
 
     var done = this.async();
     fn.call(service, params || {}, function(err, res) {
-      if(err)
+      if(err) {
         return done(err);
+      }
 
       var str = JSON.stringify(res);
 
@@ -56,8 +59,10 @@ module.exports = function(grunt) {
       grunt.verbose.debug(str);
 
       response[target] = res;
-      if(typeof options.dest === 'string')
+
+      if(typeof options.dest === 'string') {
         grunt.file.write(path.join(options.dest, target), str);
+      }
       done();
     });
   });
