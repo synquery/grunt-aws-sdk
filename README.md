@@ -64,7 +64,7 @@ grunt.initConfig({
   },
 });
 
-grunt.registerTask('launch', ['launchEC2Instance', 'setName']);
+grunt.registerTask('launch', ['aws:launchEC2Instance', 'aws:setName']);
 ```
 
 ### Options
