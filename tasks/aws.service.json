@@ -19,6 +19,10 @@
 		"namespace": "CloudWatch",
 		"apiVersion": "2010-08-01"
 	},
+	"cloudwatchlogs": {
+		"namespace": "CloudWatchLogs",
+		"apiVersion": "2014-03-28"
+	},
 	"datapipeline": {
 		"namespace": "DataPipeline",
 		"apiVersion": "2012-10-29"
