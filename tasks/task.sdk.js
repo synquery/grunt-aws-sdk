@@ -49,20 +49,29 @@ module.exports = function(grunt) {
     var done = this.async();
     fn.call(service, params || {}, function(err, res) {
       if(err) {
-        return done(err);
+        //console.log(err);
+        var errStr = JSON.stringify(err);
+        if(typeof options.dest === 'string') {
+          grunt.file.write(path.join(options.dest, target), errStr);
+        }
+        if(err.code === 'ResourceAlreadyExistsException' && options.exist) {
+          grunt.log.write(err);
+        }
+        else if(err.message.indexOf('already exists') > -1 && options.exist) {
+          grunt.log.write(err);
+        } else {
+          return done(err);
+        }
+      } else {
+        var str = JSON.stringify(res);
+        grunt.verbose.debug('Response:');
+        grunt.verbose.debug(str);
+        if(typeof options.dest === 'string') {
+          grunt.file.write(path.join(options.dest, target), str);
+        }
       }
-
-      var str = JSON.stringify(res);
-
       grunt.verbose.ok();
-      grunt.verbose.debug('Response:');
-      grunt.verbose.debug(str);
-
       response[target] = res;
-
-      if(typeof options.dest === 'string') {
-        grunt.file.write(path.join(options.dest, target), str);
-      }
       done();
     });
   });
