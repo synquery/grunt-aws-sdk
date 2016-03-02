@@ -71,6 +71,10 @@
 		"namespace": "ImportExport",
 		"apiVersion": "2010-06-01"
 	},
+	"lambda":{
+		"namespace":"Lambda",
+		"apiVersion":"2015-03-31"
+	},
 	"opsworks": {
 		"namespace": "OpsWorks",
 		"apiVersion": "2013-02-18"
