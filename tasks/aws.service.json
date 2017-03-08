@@ -43,92 +43,96 @@
 		"namespace": "EC2",
 		"apiVersion": "2013-10-01"
 	},
-	"elasticache": {
-		"namespace": "ElastiCache",
-		"apiVersion": "2013-06-15"
-	},
-	"elasticbeanstalk": {
-		"namespace": "ElasticBeanstalk",
-		"apiVersion": "2010-12-01"
-	},
-	"elastictranscoder": {
-		"namespace": "ElasticTranscoder",
-		"apiVersion": "2012-09-25"
-	},
-	"elb": {
-		"namespace": "ELB",
-		"apiVersion": "2012-06-01"
-	},
-	"emr": {
-		"namespace": "EMR",
-		"apiVersion": "2009-03-31"
-	},
-	"glacier": {
-		"namespace": "Glacier",
-		"apiVersion": "2012-06-01"
-	},
-	"iam": {
-		"namespace": "IAM",
-		"apiVersion": "2010-05-08"
-	},
-	"importexport": {
-		"namespace": "ImportExport",
-		"apiVersion": "2010-06-01"
-	},
-	"lambda":{
-		"namespace":"Lambda",
-		"apiVersion":"2015-03-31"
-	},
-	"opsworks": {
-		"namespace": "OpsWorks",
-		"apiVersion": "2013-02-18"
-	},
-	"rds": {
-		"namespace": "RDS",
-		"apiVersion": "2013-05-15"
-	},
-	"redshift": {
-		"namespace": "Redshift",
-		"apiVersion": "2012-12-01"
-	},
-	"route53": {
-		"namespace": "Route53",
-		"apiVersion": "2012-12-12"
-	},
-	"s3": {
-		"namespace": "S3",
-		"apiVersion": "2006-03-01"
-	},
-	"ses": {
-		"namespace": "SES",
-		"apiVersion": "2010-12-01"
-	},
-	"simpledb": {
-		"namespace": "SimpleDB",
-		"apiVersion": "2009-04-15"
-	},
-	"simpleworkflow": {
-		"namespace": "SimpleWorkflow",
-		"apiVersion": "2012-01-25"
-	},
-	"sns": {
-		"namespace": "SNS",
-		"apiVersion": "2010-03-31"
-	},
-	"sqs": {
-		"namespace": "SQS",
-		"apiVersion": "2012-11-05"
-	},
-	"storagegateway": {
-		"namespace": "StorageGateway",
-		"apiVersion": "2012-06-30"
-	},
-	"sts": {
-		"namespace": "STS",
-		"apiVersion": "2011-06-15"
-	},
-	"support": {
-		"namespace": "Support",
-		"apiVersion": "2013-04-15"
-	}
+    "ecs": {
+        "namespace": "ECS",
+        "apiVersion": "2014-11-13"
+    },
+    "elasticache": {
+        "namespace": "ElastiCache",
+        "apiVersion": "2013-06-15"
+    },
+    "elasticbeanstalk": {
+        "namespace": "ElasticBeanstalk",
+        "apiVersion": "2010-12-01"
+    },
+    "elastictranscoder": {
+        "namespace": "ElasticTranscoder",
+        "apiVersion": "2012-09-25"
+    },
+    "elb": {
+        "namespace": "ELB",
+        "apiVersion": "2012-06-01"
+    },
+    "emr": {
+        "namespace": "EMR",
+        "apiVersion": "2009-03-31"
+    },
+    "glacier": {
+        "namespace": "Glacier",
+        "apiVersion": "2012-06-01"
+    },
+    "iam": {
+        "namespace": "IAM",
+        "apiVersion": "2010-05-08"
+    },
+    "importexport": {
+        "namespace": "ImportExport",
+        "apiVersion": "2010-06-01"
+    },
+    "lambda": {
+        "namespace": "Lambda",
+        "apiVersion": "2015-03-31"
+    },
+    "opsworks": {
+        "namespace": "OpsWorks",
+        "apiVersion": "2013-02-18"
+    },
+    "rds": {
+        "namespace": "RDS",
+        "apiVersion": "2013-05-15"
+    },
+    "redshift": {
+        "namespace": "Redshift",
+        "apiVersion": "2012-12-01"
+    },
+    "route53": {
+        "namespace": "Route53",
+        "apiVersion": "2012-12-12"
+    },
+    "s3": {
+        "namespace": "S3",
+        "apiVersion": "2006-03-01"
+    },
+    "ses": {
+        "namespace": "SES",
+        "apiVersion": "2010-12-01"
+    },
+    "simpledb": {
+        "namespace": "SimpleDB",
+        "apiVersion": "2009-04-15"
+    },
+    "simpleworkflow": {
+        "namespace": "SimpleWorkflow",
+        "apiVersion": "2012-01-25"
+    },
+    "sns": {
+        "namespace": "SNS",
+        "apiVersion": "2010-03-31"
+    },
+    "sqs": {
+        "namespace": "SQS",
+        "apiVersion": "2012-11-05"
+    },
+    "storagegateway": {
+        "namespace": "StorageGateway",
+        "apiVersion": "2012-06-30"
+    },
+    "sts": {
+        "namespace": "STS",
+        "apiVersion": "2011-06-15"
+    },
+    "support": {
+        "namespace": "Support",
+        "apiVersion": "2013-04-15"
+    }
 }
