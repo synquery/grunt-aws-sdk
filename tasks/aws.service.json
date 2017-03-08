@@ -41,7 +41,7 @@
 	},
     "ecs": {
 		"namespace": "ECS",
-		"apiVersion": "2014-11-12"
+		"apiVersion": "2014-11-13"
 	},
 	"elasticache": {
 		"namespace": "ElastiCache",
