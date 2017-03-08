@@ -39,6 +39,10 @@
 		"namespace": "EC2",
 		"apiVersion": "2013-10-01"
 	},
+    "ecs": {
+		"namespace": "ECS",
+		"apiVersion": "2014-11-12"
+	},
 	"elasticache": {
 		"namespace": "ElastiCache",
 		"apiVersion": "2013-06-15"
