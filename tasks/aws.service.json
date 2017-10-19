@@ -3,6 +3,10 @@
 		"namespace": "AutoScaling",
 		"apiVersion": "2011-01-01"
 	},
+	"codedeploy": {
+		"namespace": "CodeDeploy",
+		"apiVersion": "2014-10-06"
+	},
 	"cloudformation": {
 		"namespace": "CloudFormation",
 		"apiVersion": "2010-05-15"
